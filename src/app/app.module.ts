@@ -11,6 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { Dashboard3Component } from './dashboard3/dashboard3.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     SidebarComponent,
     ContentComponent,
     FooterComponent,
-    Dashboard2Component
+    Dashboard2Component,
+    Dashboard3Component
   ],
   imports: [
     BrowserModule,
