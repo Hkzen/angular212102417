@@ -79,12 +79,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
+          <a [routerLink]="['/forex']" routerLinkActive="router-link-active" class="nav-link {{ modulName == 'forex' ? 'active' : '' }}">
+            <i class="nav-icon far fa-money-bill-alt"></i>
             <p>
-              Layout Options
-              <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">6</span>
+              Forex
             </p>
           </a>
           <ul class="nav nav-treeview">
