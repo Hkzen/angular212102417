@@ -313,10 +313,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/kanban.html" class="nav-link">
-            <i class="nav-icon fas fa-columns"></i>
+          <a [routerLink]="['/cuaca']" routerLinkActive="router-link-active" class="nav-link {{ modulName == 'cuaca' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-cloud-rain"></i>
             <p>
-              Kanban Board
+              Weather
             </p>
           </a>
         </li>
