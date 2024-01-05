@@ -11,12 +11,40 @@ declare const moment : any;
 })
 export class CuacaComponent implements OnInit, AfterViewInit{
   private table1: any;
+  private sun:any ;
 
+  
   constructor(private renderer : Renderer2, private http : HttpClient) {}
 
   ngAfterViewInit(): void {
     this.renderer.removeClass(document.body, "sidebar-open");
     this.renderer.addClass(document.body, "sidebar-closed");
+
+    this.sun = $("#sun").DataTable(
+      {
+        "targets" : [0],
+        "render" : function (data : string)
+        {
+          var rise = moment(data + "UTC");
+          console.log(rise);
+
+          var html = rise.local().format("HH:mm") + "WIB";
+          return html;
+        }
+      },
+      {
+        "targets" : [1],
+        "render" : function (data : string)
+        {
+          var set = moment(data + "UTC");
+          console.log(set);
+
+          var html = set.local().format("HH:mm") + "WIB";
+          return html;
+        }
+      }
+    );
+    this.bind_sun();
 
     this.table1 = $("#table1").DataTable
     (
@@ -57,6 +85,30 @@ export class CuacaComponent implements OnInit, AfterViewInit{
       }
     );
     this.bind_table1();
+  }
+
+  bind_sun(): void {
+    this.http.get("https://api.openweathermap.org/data/2.5/forecast?id=1630789&appid=4a950363d03ac88a11d8ccfc40afade6").subscribe((data: any) => {
+      console.log(data);
+
+      var list = data.list;
+      console.log(list);
+
+      list.forEach((element: any) => {
+      var sunrise = element.sunrise;
+      console.log(sunrise);
+
+      var sunset = element.sunset;
+      console.log(sunset);
+
+      var row = [
+        element.sunrise,
+        element.sunset
+      ]
+      
+      });
+    }
+    );
   }
 
   bind_table1(): void {
